@@ -8,6 +8,7 @@
       background-color="#eee"
       text-color="#000"
       active-text-color="#000">
+
       <router-link class="mui-tab-item" style="width: 100px;" :to="{path:'/course/manage/summary/'+this.courseid}">
         <el-menu-item index="1" style="width: 175px;float: left;">课程首页</el-menu-item>
       </router-link>

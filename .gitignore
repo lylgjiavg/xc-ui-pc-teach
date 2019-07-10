@@ -8,6 +8,9 @@ yarn-error.log*
 /test/e2e/reports/
 selenium-debug.log
 
+# nodeJS
+node_modules
+
 # Editor directories and files
 .idea
 .vscode
@@ -15,3 +18,13 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+src/module/media/components/
+src/statics/images/

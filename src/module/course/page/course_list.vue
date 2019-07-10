@@ -1,6 +1,7 @@
 <template>
   <section>
     <el-row >
+      <!--新增课程-->
       <el-col :span="8"  :offset=2 >
         <el-card :body-style="{ padding: '10px' }">
           <img src="/static/images/add.jpg" class="image" height="150px">
@@ -15,6 +16,8 @@
           </div>
         </el-card>
       </el-col>
+
+      <!--管理课程-->
       <el-col :span="8" v-for="(course, index) in courses" :key="course.id" :offset="index > 0 ? 2 : 2">
         <el-card :body-style="{ padding: '10px' }">
           <img :src="course.pic!=null?imgUrl+course.pic:'/static/images/nonepic.jpg'" class="image" height="150px">
@@ -35,6 +38,7 @@
                        style="float:right;">
         </el-pagination>
       </el-col>
+
     </el-row>
   </section>
 </template>
@@ -45,9 +49,11 @@
   export default {
     data() {
       return {
+        /*分页变量*/
         page:1,
         size:7,
         total: 0,
+        /*课程展示数据*/
         courses: [
           {
             id:'test01',
@@ -60,35 +66,34 @@
             pic:''
           }
           ],
-        sels: [],//列表选中列
+        /*列表选中列*/
+        sels: [],
         imgUrl:sysConfig.imgUrl
       }
     },
     methods: {
-        //分页方法
+      /*分页方法*/
       handleCurrentChange(val) {
         this.page = val;
         this.getCourse();
       },
-      //获取课程列表
+      /*获取课程列表*/
       getCourse() {
         courseApi.findCourseList(this.page,this.size,{}).then((res) => {
-          console.log(res);
+          // console.log(res);
           if(res.success){
             this.total = res.queryResult.total;
             this.courses = res.queryResult.list;
           }
-
         });
       },
+      /*管理课程*/
       handleManage: function (id) {
         console.log(id)
         this.$router.push({ path: '/course/manager/'+id})
       }
-
     },
     created(){
-
     },
     mounted() {
       //查询我的课程
@@ -96,6 +101,7 @@
     }
   }
 </script>
+
 <style scoped>
   .el-col-8{
     width:20%

@@ -88,7 +88,7 @@
       }
     },
     mounted(){
-        //操作类型
+      //操作类型
       this.dotype = this.$route.params.dotype;
       //课程id
       this.courseid = this.$route.params.courseid;
@@ -98,6 +98,7 @@
       systemApi.sys_getDictionary('203').then((res) => {
         this.chargeList = res.dvalue;
       });
+      // 查询数据字典(课程有效性)
       systemApi.sys_getDictionary('204').then((res) => {
         this.validList = res.dvalue;
       });
